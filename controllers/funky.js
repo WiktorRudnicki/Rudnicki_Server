@@ -20,7 +20,7 @@ async function addItem(req, res) {
 }
 
 async function songList(req, res) {
-  const result = await songlistDB(req.params.titel);
+  const result = await songlistDB(req.params.id);
   res.status(200).json(result);
 }
 

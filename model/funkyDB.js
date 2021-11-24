@@ -18,9 +18,8 @@ async function searchAlbumDB(titel) {
   await db.query('SELECT * from album where titel = $1', [titel]);
 }
 
-async function songlistDB(titel) {
-  const aid = await db.query('SELECT id from album where titel = $1'[titel]);
-  const result = await db.query('SELECT * from lied where fk_album_id = $1'[aid]);
+async function songlistDB(id) {
+  const result = await db.query('SELECT * from lied where fk_album_id = $1', [id]);
   return result.rows;
 }
 
