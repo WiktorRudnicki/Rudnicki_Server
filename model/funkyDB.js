@@ -6,7 +6,7 @@ async function getItemsDB() {
 }
 
 async function deleteItemDB(id) {
-  await db.query('delete from cars where id = $1', [id]);
+  await db.query('DELETE from album where id = $1', [id]);
   return true;
 }
 
@@ -19,7 +19,9 @@ async function searchAlbumDB(titel) {
 }
 
 async function songlistDB(titel) {
-  await db.query('SELECT * from album where titel = $1'[titel]);
+  const aid = await db.query('SELECT id from album where titel = $1'[titel]);
+  const result = await db.query('SELECT * from lied where fk_album_id = $1'[aid]);
+  return result.rows;
 }
 
 module.exports = { getItemsDB, deleteItemDB, songlistDB, addItemDB, searchAlbumDB };

@@ -6,6 +6,6 @@ const router = express.Router();
 router.get('/shop', getItems);
 router.delete('/shop/:id', deleteItem);
 router.post('/shop', addItem);
-router.get('/shop', songList);
+router.get('/shop/song/:titel', songList);
 
 module.exports = router;

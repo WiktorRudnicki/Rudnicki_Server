@@ -1,3 +1,11 @@
 GET http://127.0.0.1:3000/shop
 ###
 DELETE http://localhost:3000/shop/2
+###
+GET http://localhost:3000/shop/song/Rumours
+###
+POST http://127.0.0.1:3000/shop
+Content-Type: "application/json"
+{
+
+}
