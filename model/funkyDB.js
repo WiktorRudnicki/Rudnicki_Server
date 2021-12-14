@@ -25,9 +25,9 @@ async function songlistDB(id) {
 }
 
 async function purchaseDB(id) {
-  let stueck = await db.query('SELECT stueckzahl from album where id = $1', [id]);
-  stueck -= 1;
-  await db.query('UPDATE album stueckzahl = $1 where id = $2', [stueck, id]);
+  await db.query('UPDATE album set stueckzahl = stueckzahl - 1 where id = $1', [id]);
+  const result = await db.query('SELECT stueckzahl from album where id = $1', [id]);
+  return result.rows;
 }
 
 module.exports = { getItemsDB, deleteItemDB, songlistDB, addItemDB, searchAlbumDB, purchaseDB };
