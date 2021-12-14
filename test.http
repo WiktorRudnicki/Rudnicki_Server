@@ -1,5 +1,7 @@
 GET http://127.0.0.1:3000/shop
 ###
+GET http://127.0.0.1:3000/shop/1
+###
 DELETE http://localhost:3000/shop/2
 ###
 GET http://localhost:3000/shop/song/1

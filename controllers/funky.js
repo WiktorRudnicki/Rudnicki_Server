@@ -1,4 +1,4 @@
-const { getItemsDB, deleteItemDB, songlistDB, addItemDB, searchAlbumDB } = require('../model/funkyDB');
+const { getItemsDB, deleteItemDB, songlistDB, addItemDB, searchAlbumDB, purchaseDB } = require('../model/funkyDB');
 
 async function getItems(req, res) {
   const result = await getItemsDB();
@@ -24,4 +24,13 @@ async function songList(req, res) {
   res.status(200).json(result);
 }
 
-module.exports = { getItems, deleteItem, addItem, songList };
+async function searchAlbum(req, res) {
+  const result = await searchAlbumDB(req.params.id);
+  res.status(200).json(result);
+}
+
+async function purchase(req) {
+  await purchaseDB(req.params.id);
+}
+
+module.exports = { getItems, deleteItem, addItem, songList, searchAlbum, purchase };
